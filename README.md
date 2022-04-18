@@ -1,6 +1,8 @@
 # TextObfuscator
 A simple obfuscating script that animates desired text
 
+![](https://ifp.pw/HR3Q.gif)
+
 # How it works
 1. The text that is entered in the **text** variable is split into individual letters, stored in an array
 2. Each letter has a separate declared array, which acts as a place to store characters that will be used to replace that specific letter down the line
