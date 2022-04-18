@@ -1,1 +1,37 @@
+<!DOCTYPE html> <html dir="ltr" lang="en-CA">
+<head> <title>Imforpeace</title> <meta charset="utf-8" /> 
+  <script>
+	document.getElementById("titleglitch").textContent="Imforpeace";
+	document.getElementById("titleglitch1").textContent="Imforpeace";
+	document.getElementById("titleglitch2").textContent="Imforpeace";
+	document.getElementById("titleglitch3").textContent="Imforpeace";
+	document.getElementById("titleglitch4").textContent="Imforpeace";
+	document.getElementById("titleglitch5").textContent="Imforpeace";
+	document.getElementById("titleglitch6").textContent="Imforpeace";
+	document.getElementById("titleglitch7").textContent="Imforpeace";
+	document.getElementById("titleglitch8").textContent="Imforpeace";
 
+	function durationSlider() {
+    var count = 0;
+     
+    setInterval(function() {
+		var number = Math.floor(Math.random() * 99);
+			 document.getElementById("animatedtext").textContent=changearray[number];
+        console.log(count);
+
+        count += 1;
+        if (count >= 99) {
+            count = 0;
+        }
+    }, 100);
+
+}
+
+durationSlider();
+	</script>
+  </head>
+  
+  <body>
+	<div id="animatedtext">Imforpeace</div>
+  </body>
+</html>
