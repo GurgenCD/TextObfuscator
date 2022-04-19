@@ -6,6 +6,8 @@
     <body>
 	    <div id="animatedtext">Imforpeace</div>
 	    <script>
+	document.addEventListener("DOMContentLoaded", function(event) {
+
         	document.getElementById("animatedtext").textContent="Imforpeace";
 
         	function durationSlider() {
@@ -24,6 +26,7 @@
                 }, 100);
             }
             durationSlider();
+	});
         </script>
     </body>
 </html>
