@@ -79,14 +79,15 @@ try {
         {
             textarray_help[i] = lines[textarray[i]].toUpperCase();
         }
+	var changethis = text;
+        var which = Math.random();
+	const changethis_arrayed = changethis.split('');
         if(isLetter(textarray_help[0])	 && isLetter(textarray_help[1]))
 	{
         	var zero = eval(textarray_help[0]);
         	var two = eval(textarray_help[1]);
 
-        var changethis = text;
-        var which = Math.random();
-	const changethis_arrayed = changethis.split('');
+
         if(which==0)
         {
             changethis_arrayed[textarray[0]] = eval(lines[textarray[0]].toUpperCase())[Math.floor(Math.random() * eval(zero).length)];
