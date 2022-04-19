@@ -1,33 +1,31 @@
 <!DOCTYPE html> <html dir="ltr" lang="en-CA">
-<head> <title>Imforpeace</title> <meta charset="utf-8" /> 
-  <script src="try.js?Monday 18th of April 2022 05:14:32 AM"></script>
-
-  </head>
+    <head> <title>Imforpeace</title> <meta charset="utf-8" /> 
+      <script src="try.js?Monday 18th of April 2022 05:14:32 AM"></script>
+    </head>
   
-  <body>
-	<div id="animatedtext">Imforpeace</div>
-	  
-	  
-	<script>
-	document.getElementById("animatedtext").textContent="Imforpeace";
+    <body>
+	    <div id="animatedtext">Imforpeace</div>
+ 
+	    <script>
+        	document.getElementById("animatedtext").textContent="Imforpeace";
 
-	function durationSlider() {
-    	var count = 0;
-     
-    setInterval(function() {
-		var number = Math.floor(Math.random() * 99);
-			 document.getElementById("animatedtext").textContent=changearray[number];
-        console.log(count);
+        	function durationSlider() {
+            	var count = 0;
 
-        count += 1;
-        if (count >= 99) {
-            count = 0;
-        }
-    }, 100);
+                setInterval(function() {
+        	    	var number = Math.floor(Math.random() * 99);
+        	    		 document.getElementById("animatedtext").textContent=changearray[number];
+                    console.log(count);
 
-}
+                    count += 1;
+                    if (count >= 99)
+                    {
+                        count = 0;
+                    }
+                }, 100);
 
-durationSlider();
-  </script>
-  </body>
+            }
+            durationSlider();
+        </script>
+    </body>
 </html>
