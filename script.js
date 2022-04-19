@@ -1,7 +1,7 @@
 //Written by Gurgen Efendiyev, ifp.pw
 
 try {
-    var text = "ifp.pw";
+    var text = "The quick brown fox jumps over the lazy dog";
 	
 	
 	
@@ -40,15 +40,13 @@ try {
 
 
 
-        const lines = text.split('');
+    const lines = text.split('');
 
-	function isLetter(str)
-    {
+	function isLetter(str) {
   		return str.length === 1 && str.match(/[a-z]/i);
 	}
     
-    function shuffle(array)
-    {
+    function shuffle(array) {
         let currentIndex = array.length,  randomIndex;
       
         // While there remain elements to shuffle...
@@ -62,7 +60,6 @@ try {
               [array[currentIndex], array[randomIndex]] = [
                 array[randomIndex], array[currentIndex]];
             }
-      
         return array;
     }
       
@@ -79,29 +76,30 @@ try {
         {
             textarray_help[i] = lines[textarray[i]].toUpperCase();
         }
-	    var changethis = text;
-        var which = Math.random();
-
-        if(isLetter(textarray_help[0])	 && isLetter(textarray_help[1]))
+        if(isLetter(textarray_help[0]) && isLetter(textarray_help[1]))
 	    {
-            var zero = eval(textarray_help[0]);
-            var two = eval(textarray_help[1]);
+        	var zero = eval(textarray_help[0]);
+        	var two = eval(textarray_help[1]);
+        }
 
-
-            if(which==0)
-            {
-                const changethis_arrayed = changethis.split('');
-                changethis_arrayed[textarray[0]] = eval(lines[textarray[0]].toUpperCase())[Math.floor(Math.random() * eval(zero).length)];
-            }
-            else
-            {
-                const changethis_arrayed = changethis.split('');
+        var changethis = text;
+        var which = Math.random();
+        if(which==0)
+        {
+            const changethis_arrayed = changethis.split('');
+            changethis_arrayed[textarray[0]] = eval(lines[textarray[0]].toUpperCase())[Math.floor(Math.random() * eval(zero).length)];
+        }
+        else
+        {
+            const changethis_arrayed = changethis.split('');
+            if(isLetter(textarray_help[0])	 && isLetter(textarray_help[1]))
+    	    {
                 changethis_arrayed[textarray[0]] = eval(lines[textarray[0]].toUpperCase())[Math.floor(Math.random() * eval(zero).length)];
                 changethis_arrayed[textarray[1]] = eval(lines[textarray[1]].toUpperCase())[Math.floor(Math.random() * eval(two).length)];
 	        }
             var final = changethis_arrayed.join('');
-            changearray[changecount] = final;
         }
+        changearray[changecount] = final;
     }
 } catch (err) {
     console.error(err);
