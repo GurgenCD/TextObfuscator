@@ -78,7 +78,6 @@ try {
         for(var i = 0; i < lines.length; i++)
         {
             textarray_help[i] = lines[textarray[i]].toUpperCase();
-	    console.log(textarray_help[i]);
         }
         if(isLetter(textarray_help[0])	 && isLetter(textarray_help[1]))
 	{
