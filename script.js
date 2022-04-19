@@ -1,7 +1,7 @@
 //Written by Gurgen Efendiyev, ifp.pw
 
 try {
-    var text = "Imforpeace";
+    var text = "ifp.pw";
 	
 	
 	
@@ -38,8 +38,13 @@ try {
         Y = ["Y", "y"],
         Z = ["Z", "z"];
 
+
+
         const lines = text.split('');
-        console.log(lines);
+
+	function isLetter(str) {
+  		return str.length === 1 && str.match(/[a-z]/i);
+	}
     
     function shuffle(array) {
         let currentIndex = array.length,  randomIndex;
@@ -61,7 +66,9 @@ try {
       
     for (var i = 0; i < text.length; i++)
     {
+	
         textarray[i] = i;
+
     }
 
     var changearray = [];
@@ -71,11 +78,15 @@ try {
         for(var i = 0; i < lines.length; i++)
         {
             textarray_help[i] = lines[textarray[i]].toUpperCase();
+	    console.log(textarray_help[i]);
         }
-        var zero = eval(textarray_help[0]);
-        var two = eval(textarray_help[1]);
+        if(isLetter(textarray_help[0])	 && isLetter(textarray_help[1]))
+	{
+        	var zero = eval(textarray_help[0]);
+        	var two = eval(textarray_help[1]);
+}
 
-        var changethis = "Imforpeace";
+        var changethis = text;
         var which = Math.random();
         if(which==0)
         {
@@ -85,8 +96,12 @@ try {
         else
         {
             const changethis_arrayed = changethis.split('');
+        if(isLetter(textarray_help[0])	 && isLetter(textarray_help[1]))
+	{
             changethis_arrayed[textarray[0]] = eval(lines[textarray[0]].toUpperCase())[Math.floor(Math.random() * eval(zero).length)];
             changethis_arrayed[textarray[1]] = eval(lines[textarray[1]].toUpperCase())[Math.floor(Math.random() * eval(two).length)];
+	}
+	
 
             var final = changethis_arrayed.join('');
         }
@@ -98,4 +113,3 @@ try {
 } catch (err) {
     console.error(err);
 }
-
