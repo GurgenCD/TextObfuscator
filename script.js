@@ -86,14 +86,13 @@ try {
 
         var changethis = text;
         var which = Math.random();
+	const changethis_arrayed = changethis.split('');
         if(which==0)
         {
-            const changethis_arrayed = changethis.split('');
             changethis_arrayed[textarray[0]] = eval(lines[textarray[0]].toUpperCase())[Math.floor(Math.random() * eval(zero).length)];
         }
         else
         {
-            const changethis_arrayed = changethis.split('');
             changethis_arrayed[textarray[0]] = eval(lines[textarray[0]].toUpperCase())[Math.floor(Math.random() * eval(zero).length)];
             changethis_arrayed[textarray[1]] = eval(lines[textarray[1]].toUpperCase())[Math.floor(Math.random() * eval(two).length)];
 	}
