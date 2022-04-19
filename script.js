@@ -83,7 +83,6 @@ try {
 	{
         	var zero = eval(textarray_help[0]);
         	var two = eval(textarray_help[1]);
-}
 
         var changethis = text;
         var which = Math.random();
@@ -95,8 +94,6 @@ try {
         else
         {
             const changethis_arrayed = changethis.split('');
-        if(isLetter(textarray_help[0])	 && isLetter(textarray_help[1]))
-	{
             changethis_arrayed[textarray[0]] = eval(lines[textarray[0]].toUpperCase())[Math.floor(Math.random() * eval(zero).length)];
             changethis_arrayed[textarray[1]] = eval(lines[textarray[1]].toUpperCase())[Math.floor(Math.random() * eval(two).length)];
 	}
