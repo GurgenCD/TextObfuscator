@@ -8,9 +8,6 @@ try {
     //There's probably a smarter way to do this, but it's gonna work so who cares
     var textarray = [];
     var textarray_help = [];
-    
-    var trycount = 9;
-    
     var A = ["A", "a", "4"],
         B = ["B", "b"],
         C = ["C", "c"],
@@ -40,7 +37,7 @@ try {
 
 
 
-    const lines = text.split('');
+    	const lines = text.split('');
 
 	function isLetter(str) {
   		return str.length === 1 && str.match(/[a-z]/i);
