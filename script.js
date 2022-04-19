@@ -42,11 +42,13 @@ try {
 
         const lines = text.split('');
 
-	function isLetter(str) {
+	function isLetter(str)
+    {
   		return str.length === 1 && str.match(/[a-z]/i);
 	}
     
-    function shuffle(array) {
+    function shuffle(array)
+    {
         let currentIndex = array.length,  randomIndex;
       
         // While there remain elements to shuffle...
@@ -66,9 +68,7 @@ try {
       
     for (var i = 0; i < text.length; i++)
     {
-	
         textarray[i] = i;
-
     }
 
     var changearray = [];
@@ -79,33 +79,30 @@ try {
         {
             textarray_help[i] = lines[textarray[i]].toUpperCase();
         }
-	var changethis = text;
+	    var changethis = text;
         var which = Math.random();
-	const changethis_arrayed = changethis.split('');
+
         if(isLetter(textarray_help[0])	 && isLetter(textarray_help[1]))
-	{
-        	var zero = eval(textarray_help[0]);
-        	var two = eval(textarray_help[1]);
+	    {
+            var zero = eval(textarray_help[0]);
+            var two = eval(textarray_help[1]);
 
 
-        if(which==0)
-        {
-            changethis_arrayed[textarray[0]] = eval(lines[textarray[0]].toUpperCase())[Math.floor(Math.random() * eval(zero).length)];
-        }
-        else
-        {
-            changethis_arrayed[textarray[0]] = eval(lines[textarray[0]].toUpperCase())[Math.floor(Math.random() * eval(zero).length)];
-            changethis_arrayed[textarray[1]] = eval(lines[textarray[1]].toUpperCase())[Math.floor(Math.random() * eval(two).length)];
-	}
-	
-
+            if(which==0)
+            {
+                const changethis_arrayed = changethis.split('');
+                changethis_arrayed[textarray[0]] = eval(lines[textarray[0]].toUpperCase())[Math.floor(Math.random() * eval(zero).length)];
+            }
+            else
+            {
+                const changethis_arrayed = changethis.split('');
+                changethis_arrayed[textarray[0]] = eval(lines[textarray[0]].toUpperCase())[Math.floor(Math.random() * eval(zero).length)];
+                changethis_arrayed[textarray[1]] = eval(lines[textarray[1]].toUpperCase())[Math.floor(Math.random() * eval(two).length)];
+	        }
             var final = changethis_arrayed.join('');
+            changearray[changecount] = final;
         }
-        changearray[changecount] = final;
     }
-
-
-
 } catch (err) {
     console.error(err);
 }
