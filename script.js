@@ -84,7 +84,10 @@ try {
         if(which==0)
         {
             const changethis_arrayed = changethis.split('');
-            changethis_arrayed[textarray[0]] = eval(lines[textarray[0]].toUpperCase())[Math.floor(Math.random() * eval(zero).length)];
+	    if(isLetter(textarray_help[0])	 && isLetter(textarray_help[1]))
+    	    {
+            	changethis_arrayed[textarray[0]] = eval(lines[textarray[0]].toUpperCase())[Math.floor(Math.random() * eval(zero).length)];
+	    }
         }
         else
         {
@@ -93,7 +96,7 @@ try {
     	    {
                 changethis_arrayed[textarray[0]] = eval(lines[textarray[0]].toUpperCase())[Math.floor(Math.random() * eval(zero).length)];
                 changethis_arrayed[textarray[1]] = eval(lines[textarray[1]].toUpperCase())[Math.floor(Math.random() * eval(two).length)];
-	        }
+	    }
             var final = changethis_arrayed.join('');
         }
         changearray[changecount] = final;
