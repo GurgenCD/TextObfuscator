@@ -1,132 +1,63 @@
 // Written by Gurgen Gurgenyan, circion.design
-// A lot of the script was written a while ago and I slapped parametricity just a second ago.
-
-var refreshinterval = 100;
-
-//TODO parametric amount of swapped letters per pattern
-//var letterswapcount = 2;
 
 window.addEventListener('DOMContentLoaded', () => {
+    const maxReplacementCount = 2;
+    const divs = window.document.querySelector("#animatedtext");
 
-    var text = document.getElementById("animatedtext").innerText;
-    var changearray = [];
-    var textarray = [];
-    var textarray_help = [];
+    //All unicode have a chance of going uppercase or lower case.
+    //However if a specific letter is defined in the letterMap to have other characters, it will account them in as well.
+    const letterMap = {
+        "A": ["4"],
+        "E": ["3"],
+        "F": ["7"],
+        "I": ["i", "L", "!"],
+        "M": ["#"],
+        "N": ["#"],
+        "O": ["0"],
+        "S": ["$"],
+        "U": ["%"]
+    };
 
-    //Usage: lettermap["A"][2]
-    var lettermap =
-    {
-        "A": ["A", "a", "4"],
-        "B": ["B", "b"],
-        "C": ["C", "c"],
-        "D": ["D", "d"],
-        "E": ["E", "e", "3"],
-        "F": ["F", "f", "7"],
-        "G": ["G", "g"],
-        "H": ["H", "H"],
-        "I": ["I", "1", "i", "L", "!"],
-        "J": ["J", "j"],
-        "K": ["K", "k"],
-        "L": ["L", "l"],
-        "M": ["M", "m", "#"],
-        "N": ["N", "n", "#"],
-        "O": ["O", "o", "0"],
-        "P": ["P", "p"],
-        "Q": ["q", "q"],
-        "R": ["R", "r"],
-        "S": ["S", "s", "$"],
-        "T": ["T", "t"],
-        "U": ["U", "u", "%"],
-        "V": ["V", "v"],
-        "W": ["W", "w"],
-        "X": ["X", "x"],
-        "Y": ["Y", "y"],
-        "Z": ["Z", "z"]
-    }
-
-
-
-    function isLetter(str) {
-        return str.length === 1 && str.match(/[a-z]/i);
-    }
-
-    function shuffle(array) {
-        let currentIndex = array.length, randomIndex;
-
-        // While there remain elements to shuffle...
-        while (currentIndex != 0) {
-
-            // Pick a remaining element...
-            randomIndex = Math.floor(Math.random() * currentIndex);
-            currentIndex--;
-
-            // And swap it with the current element.
-            [array[currentIndex], array[randomIndex]] = [
-                array[randomIndex], array[currentIndex]];
+    function leetifyChar(c) {
+        const possibleReplacements = letterMap[c.toUpperCase()];
+      	// if undefined: could still be a ASCII letter to lower/uppercase randomly
+      	// else: must also consider the lower/uppercase change
+        if (possibleReplacements !== undefined) {
+            let i = Math.floor(Math.random() * (possibleReplacements.length + 2));
+          	if (i == possibleReplacements.length) {
+            	return c.toLowerCase(); 
+            } else if (i > possibleReplacements.length) {
+              	return c.toUpperCase();
+            } else {
+            	return possibleReplacements[i];
+            }
+        } else {
+          if (Math.random() >= 0.5) {
+          	return c.toLowerCase();
+          } else {
+            return c.toUpperCase();
+          }
         }
-        return array;
     }
-    function generatePattern() {
-        let lines = text.split('');
-        for (var i = 0; i < text.length; i++) {
-            textarray[i] = i;
+
+    function randomlyLeetifyChars(s, n) {
+        let r = s.split("");
+        for (; n > 0; n--) {
+            let i = Math.floor(Math.random() * r.length); // utf16 indexing! watchout.
+            r[i] = leetifyChar(r[i]);
         }
-
-
-        for (var changecount = 0; changecount < 100; changecount++) {
-            shuffle(textarray);
-            for (var i = 0; i < lines.length; i++) {
-                textarray_help[i] = lines[textarray[i]].toUpperCase();
-            }
-
-            if (isLetter(textarray_help[0]) && isLetter(textarray_help[1])) {
-                var zero = lettermap[textarray_help[0]];
-                var two = lettermap[textarray_help[1]];
-            }
-
-            var changethis = text;
-            var which = Math.random();
-            if (which == 0) {
-                const changethis_arrayed = changethis.split('');
-                if (isLetter(textarray_help[0]) && isLetter(textarray_help[1])) {
-                    changethis_arrayed[textarray[0]] = lettermap[lines[textarray[0]].toUpperCase()][Math.floor(Math.random() * zero.length)];
-                }
-            }
-            else {
-                const changethis_arrayed = changethis.split('');
-                if (isLetter(textarray_help[0]) && isLetter(textarray_help[1])) {
-                    changethis_arrayed[textarray[0]] = lettermap[lines[textarray[0]].toUpperCase()][Math.floor(Math.random() * zero.length)];
-                    changethis_arrayed[textarray[1]] = lettermap[lines[textarray[1]].toUpperCase()][Math.floor(Math.random() * two.length)];
-                }
-                var final = changethis_arrayed.join('');
-            }
-            changearray[changecount] = final;
-        }
-        document.getElementById("animatedtext").textContent = text;
+      	r = r.join("");
+        return r;
     }
 
-    function durationSlider() {
-        var count = 0;
-        var prevselector;
-        setInterval(function () {
-            var arrayselector = Math.floor(Math.random() * 99);
-            var changedtext = document.getElementById("animatedtext");
-
-            if (changearray[prevselector] != changedtext.innerText) {
-                text = document.getElementById("animatedtext").innerText;
-                generatePattern();
-            }
-            changedtext.textContent = changearray[arrayselector];
-            prevselector = arrayselector;
-
-            count += 1;
-            if (count >= 99) {
-                count = 0;
-            }
-        }, refreshinterval);
-
+    function setTextAll(divs, s) {
+            divs.textContent = s;
     }
 
-    generatePattern();
-    durationSlider();
+  	const s = divs.textContent; // Initial text must be in the first div.
+    setTextAll(divs, s); // Replicate among us all the divs.
+    let handle = setInterval(function () {
+        setTextAll(divs, randomlyLeetifyChars(s, maxReplacementCount));
+
+    }, 200);
 });
