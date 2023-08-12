@@ -1,7 +1,7 @@
 # TextObfuscator
 A vanilla JS script that reads the innerText of a div with a "animatedtext" id, generatespatterns in realtime, and cycles between them in order to create a glitch-looking effect
 
-[Check it out](https://imforpeace.github.io/TextObfuscator/)
+[Check it out](https://gurgencd.github.io/TextObfuscator/)
 
 # How it works
 JS script:
